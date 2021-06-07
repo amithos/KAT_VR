@@ -1,6 +1,6 @@
 # KAT VR
 
-[Landing page]() : [Mock-up](https://www.figma.com/file/hhtGde1r4hMr5wghrKm6vl/KatVR?node-id=159%3A0)
+[The landing page]() : [The mock-up](https://www.figma.com/file/hhtGde1r4hMr5wghrKm6vl/KatVR?node-id=159%3A0)
 
 ***
 ## Who are they?
