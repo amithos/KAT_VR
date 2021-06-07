@@ -7,14 +7,7 @@
   line-height: 150%;
     
   &::after {
-    content: "";
-    position: absolute;
-    border: $colorDarkGgray solid $transitionBorderWidth;
-    background-color: $colorDarkGgray;
-    border-radius: $transitionBorderWidth;
-    bottom: -10px;
-    right: 0;
-    left: 0;
+    @extend %afterUnderline;
   }
 
   &--1 > :first-child {
@@ -39,5 +32,9 @@
     display: inline-block;
     position: relative;
     @extend %mainLinks;
+  }
+
+  @media (max-width: $screenMaxTablet) {
+    display: none;
   }
 }

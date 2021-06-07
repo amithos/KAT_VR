@@ -1,4 +1,5 @@
 $subBlockMargin: 12%;
+$photoTransition: 0.5s;
 
 .start-view {
   height: 100vh;
@@ -17,6 +18,28 @@ $subBlockMargin: 12%;
     max-width: 80.6%;
     width: 100%;
     z-index: -1;
+    transition: $photoTransition;
+    
+    &--hide {
+      visibility: none;
+      opacity: 0;
+    }
+  }
+
+  &__photo2 {
+    position: absolute;
+    right: 15%;
+    // bottom: 250px;
+    height: 50vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: $photoTransition;
+    z-index: -1;
+
+    &--show {
+      visibility: visible;
+      opacity: 1;
+    }
   }
 
   &__content {

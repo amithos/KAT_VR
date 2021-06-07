@@ -1,0 +1,85 @@
+.lang {
+  display: flex;
+  justify-content: center;
+  width: 45px;
+  position: relative;
+
+  &__icon {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+    padding: 3px;
+  
+    &::after {
+      content: "▾";
+      position: absolute;
+      color: $colorBlue;
+      top: 3px;
+      right: -0;
+      height: 3px;
+    }
+  
+    &--en {
+      &::before {
+        @include choosedLanguage("En");
+      }
+    }
+
+    &--pl {
+      &::before {
+        @include choosedLanguage("Pl");
+      }
+    }
+
+    &--ua {
+      &::before {
+        @include choosedLanguage("Ua");
+      }
+    }
+
+    &--ru {
+      &::before {
+        @include choosedLanguage("Ru");
+      }
+    }
+  }
+
+  &__slide {
+    position: absolute;
+    top: 39px;
+    left: 0;
+    max-height: 0;
+    background-color: $colorIndigo;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+
+    &--tog {
+      max-height: 110px;
+      padding-top: 12px;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    color: $colorBlue;
+    text-align: center;
+  }
+
+  &__item {
+    padding: 0 12px;
+    margin-bottom: 12px;
+
+    &:hover {
+      color: white;
+      cursor: pointer;
+      background-color: $colorBlue;
+    }
+  }
+
+  &__elect {
+    display: none;
+  }
+}

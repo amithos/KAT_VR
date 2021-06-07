@@ -1,0 +1,19 @@
+.contacts-list {
+  list-style-type: none;
+  
+  &__item {
+    margin-bottom: 10px;
+  }
+  
+  &__links {
+    display: inline-block;
+    color: $colorText;
+    text-decoration: none;
+    transition: 0.3s;
+    
+    &:hover {
+      color: $colorBlue;
+      transform: translateX(10px);
+    }
+  }
+}

@@ -2,7 +2,13 @@
 @import "fonts";
 @import "typography";
 
+@import "./utils/keyframes";
+@import "./blocks/buy-popup.scss";
+@import "./blocks/video-popup.scss";
+@import "./blocks/faq-popup.scss";
+@import "./blocks/popup.scss";
 @import "./blocks/button.scss";
+@import "./blocks/slider.scss";
 @import "./blocks/page.scss";
 @import "./blocks/start-view.scss";
 @import "./blocks/menu.scss";

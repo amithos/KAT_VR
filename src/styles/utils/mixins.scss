@@ -1,0 +1,59 @@
+@mixin specificationMobileButton {
+  width: 34px;
+  height: 34px;
+}
+
+@mixin stablePhoto {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@mixin lineCount($value) {
+  -webkit-line-clamp: $value;
+  line-clamp: $value;
+}
+
+@mixin lineHide() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+@mixin titleTablet() {
+  font-size: 21px;
+  line-height: 21px;
+}
+
+@mixin choosedLanguage($value) {
+  position: relative;
+  left: -4px;
+  content: "#{$value}";
+  color: $colorBlue;
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 500;
+}
+
+@mixin wave($distance) {
+  content: "";
+  position: absolute;
+  border: 1px solid $colorBlue;
+  left: #{$distance};
+  right: #{$distance};
+  top: #{$distance};
+  bottom: #{$distance};
+  border-radius: 50%;
+  opacity: 0;
+  animation-name: wavesAnimation;
+  animation-duration: 0.8s;
+  animation-timing-function: linear;
+}
+
+@mixin mobileVideoButton {
+  width: 100%;
+  background-size: 100% 100%;
+}

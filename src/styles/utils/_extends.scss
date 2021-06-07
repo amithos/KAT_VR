@@ -109,3 +109,14 @@
   background-size: cover;
   transition: 0.3s;
 }
+
+%afterUnderline {
+  content: "";
+  position: absolute;
+  border: $colorDarkGgray solid $transitionBorderWidth;
+  background-color: $colorDarkGgray;
+  border-radius: $transitionBorderWidth;
+  bottom: -10px;
+  right: 0;
+  left: 0;
+}

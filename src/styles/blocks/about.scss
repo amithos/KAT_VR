@@ -16,19 +16,6 @@
     gap: 190px;
   }
 
-  &__photo-block {
-    position: relative;
-    
-    &::before {
-      content: "1/5";
-      position: absolute;
-      top: 0;
-      left: -35px;
-      font-family: inherit;
-      color: $colorBlue;
-    }
-  }
-
   &__mobile-title {
     @include titleTablet;
     display: none;

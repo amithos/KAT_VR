@@ -1,0 +1,56 @@
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(22, 2, 49, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: $popupTransitionDuration;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+
+  &--act {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__content {
+    position: relative;
+    padding: 50px;
+    background: $colorIndigo;
+    text-align: center;
+    border: $colorBlue double 10px;
+    border-radius: 24px;
+    transform: translateY(-100%);
+    transition: $popupTransitionDuration;
+
+    &--slide {
+      transform: translateY(0);
+    }
+  }
+
+  &__cross {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    background-image: url("../images/icons/menu-close-active.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+
+    &:hover {
+      animation-name: rotateAnimation;
+      animation-duration: 1s;
+    }
+  }
+}

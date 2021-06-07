@@ -24,6 +24,44 @@ $(document).ready(function() {
 
   menuBtn.click(toggleMenu);
 
+  const startPhoto1 = $('.start-view__photo');
+  const startPhoto2 = $('.start-view__photo2');
+  const photo1HideClass = 'start-view__photo--hide';
+  const photo2ShowClass = 'start-view__photo2--show';
+  const transition = $('.start-view__transition');
+  const transitionMod1 = 'transition--1';
+  const transitionMod2 = 'transition--2';
+  const buttonPrev = $('#transition__prev');
+  const buttonNext = $('#transition__next');
+
+  const changeTransitionLine = mod => {
+    transition.removeClass(transitionMod1);
+    transition.removeClass(transitionMod2);
+    transition.addClass(`transition--${mod}`);
+  };
+
+  const showFirstPhoto = () => {
+    startPhoto1.removeClass(photo1HideClass);
+    startPhoto2.removeClass(photo2ShowClass);
+    changeTransitionLine(1);
+  };
+
+  const showSecondPhoto = () => {
+    startPhoto1.addClass(photo1HideClass);
+    startPhoto2.addClass(photo2ShowClass);
+    changeTransitionLine(2);
+  };
+
+  buttonPrev.click((event) => {
+    event.preventDefault();
+    showFirstPhoto();
+  });
+
+  buttonNext.click((event) => {
+    event.preventDefault();
+    showSecondPhoto();
+  });
+
   const specMain = $('.specifications__main');
   const senBtn = $('#sen');
   const batBtn = $('#bat');
@@ -131,4 +169,102 @@ $(document).ready(function() {
   };
 
   windowElement.scroll(showTabletButton);
+
+  const activePopupClass = 'popup--act';
+  const slidePopupContentClass = 'popup__content--slide';
+
+  const popupToggler = (currentPopup, currentContent, currentVideo) => {
+    currentPopup.toggleClass(activePopupClass);
+    currentContent.toggleClass(slidePopupContentClass);
+
+    if (currentVideo && !currentPopup.hasClass(activePopupClass)) {
+      const source = currentVideo.attr('src');
+
+      currentVideo.attr('src', source);
+    }
+  };
+
+  const buyPopup = $('#buy-popup');
+  const buyButtons = $('.buy-button');
+
+  buyButtons.click(() => popupToggler(buyPopup, buyPopupContent));
+
+  const closeBuyPopupButton = $('#buy-popup__cross');
+  const buyPopupContent = $('#buy-popup__content');
+
+  closeBuyPopupButton.click(() => popupToggler(buyPopup, buyPopupContent));
+
+  const videoPopup = $('#video-popup');
+  const videoButtons = $('.video-button');
+  const video = $('.video-popup__video');
+
+  videoButtons.click(() => popupToggler(videoPopup, videoPopupContent, video));
+
+  const closeVideoPopupButton = $('#video-popup__cross');
+
+  closeVideoPopupButton.click(
+    () => popupToggler(videoPopup, videoPopupContent, video)
+  );
+
+  const videoPopupContent = $('#video-popup__content');
+
+  const faqPopup = $('#faq-popup');
+  const faqContent = $('#faq__content');
+  const faqButtons = $('.faq-button');
+  const closeFaqPopup = $('#faq__cross');
+
+  faqButtons.click(() => popupToggler(faqPopup, faqContent));
+  closeFaqPopup.click(() => popupToggler(faqPopup, faqContent));
+
+  const sliderPhotos = $('.slider__photo');
+  const slider = $('.slider');
+  const sliderWidth = slider.outerWidth();
+  const sliderLine = $('.slider__line');
+  const sliderLineWidth = sliderWidth * sliderPhotos.length;
+  const sliderPrevButton = $('#slider__prev');
+  const sliderNextButton = $('#slider__next');
+  const DOMSliderCounter = $('.slider__counter');
+  const indicatorLine = $('.slider__indicator');
+  const lastSliderLinePosition = sliderLineWidth - sliderWidth;
+  let photoCount = 1;
+  let offset = 0;
+
+  const confirmSlide = () => {
+    sliderLine.css('right', offset + 'px');
+    DOMSliderCounter.html(`${photoCount}/5`);
+    indicatorLine.css('width', `${photoCount * 20}%`);
+  };
+
+  const prevFunc = () => {
+    if (offset !== 0) {
+      offset -= sliderWidth;
+      photoCount--;
+    } else {
+      offset = lastSliderLinePosition;
+      photoCount = 5;
+    }
+
+    confirmSlide();
+  };
+
+  const nextFunc = () => {
+    if (offset !== lastSliderLinePosition) {
+      offset += sliderWidth;
+      photoCount++;
+    } else {
+      offset = 0;
+      photoCount = 1;
+    }
+
+    confirmSlide();
+  };
+
+  sliderPrevButton.click(prevFunc);
+  sliderNextButton.click(nextFunc);
+
+  windowElement.resize(() => {
+    if ($(this).outerWidth() < 1225) {
+      showFirstPhoto();
+    };
+  });
 });
